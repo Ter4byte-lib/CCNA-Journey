@@ -29,3 +29,8 @@
 
 **Goal for tomorrow:**
 - [One specific thing]
+
+```
+your code here
+show r begin hostname
+```
