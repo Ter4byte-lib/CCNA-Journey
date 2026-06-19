@@ -30,6 +30,7 @@
 **Goal for tomorrow:**
 - [One specific thing]
 
-```bash
-ping 192.168.1.1
+```python
+print("hello")
 ```
+
