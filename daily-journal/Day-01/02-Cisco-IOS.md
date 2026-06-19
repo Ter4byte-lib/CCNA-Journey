@@ -31,7 +31,7 @@ A direct connection is also useful during troubleshooting, for instance when the
 
 ## Lab: Navigating the IOS *(Atlas, some coding 😮‍💨)*
 
-![alt text](image.png)
+![initiating code](Day-01/image.png)
 
 <details>
 <summary>🧪 Exploring User EXEC Mode and CLI command help</summary>
