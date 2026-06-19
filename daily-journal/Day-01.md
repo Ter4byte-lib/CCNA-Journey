@@ -1,5 +1,6 @@
 ### Topic: The OSI model
-#Date: 18-06-2026
+# Date: 18-06-2026
+
 **Status:** 🟢 
 
 **What I learned:**
@@ -30,3 +31,6 @@
 **Goal for tomorrow:**
 - [One specific thing]
 
+```python
+
+```
