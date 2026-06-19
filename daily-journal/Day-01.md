@@ -1,68 +1,52 @@
-# Day 1 — OSI Model & Cisco IOS
+# Topic: The OSI model
+### Date: 18-06-2026
 
-**Date:** 18-06-2026
-**Status:** 🟢 Complete
+**Status:** 🟢 
 
----
+**What I learned:**
+- The OSI model is a conceptual framework and a standardization of how computers communicate. it contains 7 layers, each with a specific function. The independence of each layer allows for interoperability so engineers could focus on their area of their expertise during technical issues; this also makes debugging easy as identifying the faulty layer would mean other layers dont have to be tampered with.
+- The TCP/IP Stack however is not conceptual; its the actual framework utilized in networking. It contains 4 layers of which have similar function with the seven layers present in the OSI model. 2 layers of these 4 are almost like an abbreviation of the OSI model:
+    - The Application layer in the TCP/IP stack covers - the application layer, the presentation and the session layer of the OSI model.
+    - The Link layer in the TCP/IP stack covers - the data link layer and the physical layer. 
+- despite this engineers would usually still refer to the OSI model when having conversations for some reason 
+- The Layers in detail include:
+    - Application Layer: this layer provides network services for the application systems; it differ from other layers as it does not provide services to other layers, it also establishes availability of the end user host system
+    - Presentation Layer: translates data in a way that ensures the data is readable by the application layer of both end-users  
+    - Session Layer: establishes, manages and terminates sessions between two communicating hosts 
+    - Transport Layer: breaks down data into segments for uninterrupted transmission also accounts for data retransmission when error is encountered depending on the type of protocol used (UDP/TCP), and uses a port number to identify which application the data belongs to (e.g. port 80)  
+    - Network Layer: provides connection between two hosts that are geographically separated; sending data in packets each containing an IP address
+    - Data-link Layer: defines the format of data transmission and how data access is controlled, it matches MAC addresses to validate transmission of data between the physical layer, the switch also functions in this layer
+    - Physical Layer: The physical hardware that transfers data in bits through electrical signals (copper), light pulses (fiber), or radio waves (wireless)
+- The PDU(protocol data unit) is the specific unit of data each layer uses in transmission:
+    - Application Layer: Data
+    - Transport Layer: Segments
+    - Network Layer: Packets
+    - Data-link Layer: Frames
+    - Physical Layer: Bits
+- the process by which the data is sent from the sender's system down to the physical layer is called encapsulation whereas the process of sending the data from the physical layer to the application layer of receiver is called de-encapsulation  
 
-## 📘 Topic 1: The OSI Model
+**Struggles/Questions:**
+- we are supposedly going to go deeper into the last four layers, as for now i dont rlly have confusions as this is just the basics of the foundation
 
-### What I Learned
 
-- The OSI model is a conceptual framework and a standardization of how computers communicate. It contains 7 layers, each with a specific function. The independence of each layer allows for interoperability, so engineers can focus on their own area of expertise when troubleshooting. This also makes debugging easier, since identifying the faulty layer means the other layers don't have to be touched.
-- The TCP/IP stack, however, is not conceptual — it's the actual framework used in networking. It contains 4 layers with functions similar to the seven layers in the OSI model. Two of these four layers essentially condense multiple OSI layers into one:
-  - The **Application layer** in the TCP/IP stack covers the Application, Presentation, and Session layers of the OSI model.
-  - The **Link layer** in the TCP/IP stack covers the Data Link and Physical layers of the OSI model.
-- Despite this, engineers usually still refer to the OSI model in conversation — likely because its extra granularity gives a shared, precise vocabulary for describing exactly where a problem sits.
+# Topic: The IOS (Internetwork Operating System)
+**Status:** 🟢 
 
-**The layers in detail:**
+**What I learned:**
+- The operating system has been used since the inception of the Cisco organisation; it is now the propeitry doftware used in cisco routers and switches
+- there are other software that differ slightly from the IOS in that the IOS features a monolithic kernel whereas other operaring system like: NX-OS, IOS-XE, IOS-XS feature a micro kernel
+- This means that IOS runs its process in such a way that if one process crashes , other processes crash aswell whereas the varieted OS runs each process in protected memory adress space, so if one process crashes, it does not affect the other process
+- When connecting to cisco device (router/switch) over the netwrok its usually done using the software "Putty"; the software allows for an SSH(Secure Shell) or Telnet connection type. which are almost identical (everything is "almost" identical 🤔), they differ in the aspect of security where SSH is more secure than Telnet this is because SSH encrypts the data being sent whereas Telnet doesnt (so hackers could gain unaurthorised accees to data such as password and usernames); along with the connection types security logins are also enforced through integration with AAA(Autentication, Atthourisation and Accounting) servers. when the putty software has been setup , the IP adress of the device to be configure is entered so configuration begins
+- When making intial connections however; direct connection is needed as the device does not have an ip adress so it can be connected to over a network
+- this direct connction is done using cables: DB-9 to RJ45 , DB-9 to RJ45 addapted with a USB to Serial DB-9(to accomodate the lack of DB9 ports on modern laptops) , and modernly the USB to mini-USB is used.
+- The same sfotware is used for initial config (Putty); however this time the type of connection used is the "Serial", The serial line can be found on the device manager info on the computer (the driver for the ports need to be installed before this can happen) and other settins can be left as default
+- the direct connection could aslo be used during troubleshooting for instance when the device cant be conneted to over a network where its IP adress is unresponsive. it could als be use d to configure the bootup process of the device where SSH connection cant becuse the IP adress would need to be live meaning its already booted up
 
-| Layer | Function |
-|---|---|
-| **Application** | Provides network services to application software. Unlike other layers, it doesn't provide services to another layer — it's the only layer that interfaces directly with the end-user process. Also establishes availability of the communicating host. |
-| **Presentation** | Translates/formats data so it's readable by the application layer on both ends (e.g. encryption, compression, character encoding). |
-| **Session** | Establishes, manages, and terminates sessions between two communicating hosts. |
-| **Transport** | Breaks data into segments for reliable transmission and handles retransmission of lost data — though this depends on the protocol used (TCP does, UDP doesn't). Uses port numbers to identify which application the data belongs to (e.g. port 80). |
-| **Network** | Provides logical addressing and routing between hosts on different networks, sending data in packets — each packet carries source and destination IP addresses. |
-| **Data Link** | Defines how data is framed and how access to the physical medium is controlled. Uses MAC addresses to identify devices on the local segment. Switches operate at this layer. |
-| **Physical** | The physical hardware that transmits data as bits — via electrical signals (copper), light pulses (fiber), or radio waves (wireless). |
+##### Navigating the IOS - Lab excercise (Atlas, some coding 😮‍💨)
 
-**PDU (Protocol Data Unit)** — the unit of data each layer works with:
+![alt text](image.png)
 
-| Layer | PDU |
-|---|---|
-| Application | Data |
-| Transport | Segments |
-| Network | Packets |
-| Data Link | Frames |
-| Physical | Bits |
-
-- The process of data moving from the sender's application layer down to the physical layer is called **encapsulation**. The reverse — from the physical layer back up to the receiver's application layer — is called **de-encapsulation**.
-
-### Struggles / Questions
-
-We're going deeper into the last four layers next, but for now I don't have any major confusions — this is just the foundation.
-
----
-
-## 🖥️ Topic 2: The IOS (Internetwork Operating System)
-
-### What I Learned
-
-- IOS has been used since the inception of Cisco and is now the proprietary software running on Cisco routers and switches.
-- Other Cisco operating systems differ slightly: IOS uses a **monolithic kernel**, while newer systems like **NX-OS** and **IOS-XR** use a more modular/microkernel-style architecture. *(Note: corrected "IOS-XS" → "IOS-XR" — there's no Cisco OS called IOS-XS.)*
-- This matters because in a monolithic kernel, all processes share the same memory space — so if one process crashes, it can take others down with it. In the modular OS, each process runs in its own protected memory space, so a single crash doesn't bring down the rest of the system.
-- Connecting to a Cisco device (router/switch) over the network is usually done with **PuTTY**, which supports both **SSH** (Secure Shell) and **Telnet** connections. The two are functionally similar but differ in security: SSH encrypts the data it sends, while Telnet doesn't — meaning Telnet traffic (including usernames and passwords) can be intercepted. Logins are also commonly enforced through integration with **AAA** (Authentication, Authorisation, and Accounting) servers. Once PuTTY is set up, you just enter the IP address of the device to begin configuration.
-- For the *initial* connection, though, a direct connection is required — the device doesn't have an IP address yet, so it can't be reached over the network.
-- This direct connection uses one of: DB-9 to RJ45, DB-9 to RJ45 adapted with a USB-to-Serial-DB-9 (to work around modern laptops lacking DB-9 ports), or — more commonly today — USB to mini-USB.
-- PuTTY is still used for this initial config, but with the connection type set to **Serial** instead. The serial (COM) line can be found in Device Manager (port drivers need to be installed first) — other settings can be left as default.
-- A direct connection is also useful for troubleshooting — e.g. when a device can't be reached over the network because its IP is unresponsive — or for configuring the boot process, which can't be done over SSH since that requires the device to already be live (i.e. already booted).
-
-### Lab Exercise — Navigating the IOS *(Packet Tracer)*
-
-![Packet Tracer lab topology](image.png)
-
-#### Exploring User EXEC Mode and CLI Command Help
+### [Exploring User Exec Mode and CLI command help]
 
 ```diff
 +Router>?
@@ -82,18 +66,18 @@ Exec commands:
   terminal    Set terminal line parameters
   traceroute  Trace route to destination
 ```
+the user exec - ">" has limited commands so we will majorly carry out tasks in the previleged exec - "#" mode 
 
-User EXEC mode (`>`) has limited commands, so most tasks happen in **Privileged EXEC mode** (`#`).
 
-#### Exploring Privileged EXEC Mode and Context-Sensitive Help
-
+### [Exploring previliged Exec mode and context sensitive help]
 ```diff
-Router>enable                     (entering privileged EXEC mode)
-Router#disable                    (exiting privileged EXEC mode)
-Router>en                         (abbreviations can be used)
+
+Router>enable (entering previleged exec mode)
+Router#disable (exiting previleged exec mode)
+Router>en (abbrevaitions could be used)
 Router#di
 % Ambiguous command: "di"
-Router#di?                        ("?" shows all commands matching the entered keyword)
+Router#di? ("?" used to see all commands available with the keyword entered.)
 dir  disable  disconnect  
 Router#disa
 Router>en
@@ -110,7 +94,7 @@ Router#sh ?
   clock              Display the system clock
   controllers        Interface controllers status
    --More-- 
-    -- output truncated -- (pressing "Enter" outputs additional commands one line at a time — tedious)
+    -- output truncated -- (pressing the "Enter" key outputs the additional commands line by line (tedious) )
   flow               Flow information
   frame-relay        Frame-Relay information
   history            Display the session command history
@@ -121,7 +105,7 @@ Router#sh ?
   license            Show license information
   line               TTY line information
    --More-- 
-    -- output truncated -- (pressing "Spacebar" outputs additional commands page by page)
+    -- output truncated -- (pressing the "Spacebar" key outputs additional caommands page by page)
   spanning-tree      Spanning tree topology
   ssh                Status of SSH server connections
   standby            standby configuration
@@ -140,6 +124,7 @@ Router#sh aaa ?
   user      Show users active in AAA subsystem
 Router#sh aaa us
 % Incomplete command.
+Router#sh aaa us
 Router#sh aaa user all
 Router#sh aaa usor all
                 ^
@@ -148,36 +133,36 @@ Router#sh aaa usor all
 Router#
 ```
 
-#### Exploring Global Configuration Mode
+### [Exploring Global Configuration mode]
 
 ```diff
 Router#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
-Router(config)#ip host server1 1.1.1.1      (meaning of these commands covered in later lessons ↓)
+Router(config)#ip host server1 1.1.1.1 (meaning of commands taught in further lessons ↓)
 Router(config)#ip host server2 2.2.2.2
-Router(config)#R1                           (deliberate error)
+Router(config)#R1(delibrate error)
                 ^
 % Invalid input detected at '^' marker.
 	
-Router(config)#hostname R1                  (instead of retyping a command, hit "Up Arrow" to recall the last one — only within the current command-hierarchy level. "Ctrl+A" jumps to the start of the line, "Ctrl+E" to the end — life-saving shortcuts 🫡)
-R1(config)#show ip interface brief          ("show" only works in privileged EXEC mode)
+Router(config)#hostname R1(instead of retyping the whole comman again jsut hit the  "Up-Arrow" key to go back to most recent command, scrolling back through entire history is possible with this but only the history as far as the in the current level of command hierachy. "ctrl-a" could also be used to go to the extreme beginning of the command , "ctrl-e" is used to go to the extreme end of the command entered (life-saving shortcuts🫡))
+R1(config)#show ip interface brief("show"only possible in previleged exec mode)
             ^
 % Invalid input detected at '^' marker.
 	
-R1(config)#do show ip interface brief       ("do" overrides this restriction)
+R1(config)#do show ip interface brief("do" is used to override this however)
 Interface              IP-Address      OK? Method Status                Protocol 
 GigabitEthernet0/0     unassigned      YES NVRAM  administratively down down 
 GigabitEthernet0/1     unassigned      YES NVRAM  administratively down down 
 GigabitEthernet0/2     unassigned      YES NVRAM  administratively down down 
 Vlan1                  unassigned      YES NVRAM  administratively down down
-R1(config)#interface gigabitEthernet 0/0    (entering interface config mode)
-R1(config-if)#exit                          (moving down the hierarchy one level at a time)
-R1(config)#interface gigabitEthernet 0/0
-R1(config-if)#end                           (skipping straight to privileged EXEC mode — also achievable with "Ctrl+C")
+R1(config)# interface gigabitEthernet 0/0(entering interface config mode)
+R1(config-if)#exit() (going down the command hierachy at a one level interval )
+R1(config)# interface gigabitEthernet 0/0
+R1(config-if)#end(bypasing the one level interval and goin straight to the previleged exec mode - also achievebel with "ctrl-c")
 R1#
 %SYS-5-CONFIG_I: Configured from console by console
 
-R1#show running-config                      (viewing the entire device configuration)
+R1# show running-config (viewing entire device configuration)
 Building configuration...
 
 Current configuration : 741 bytes
@@ -197,9 +182,9 @@ line vty 0 4
  login
 !
 !
-    -- output truncated --
+    -- output truncated--
 	
-R1#sh run | begin Hostname              (viewing config starting from "Hostname" — no match found, so no output)
+R1#sh run | begin Hostname (viewing entire config starting with "Hostname", no instance of "Hostname so no output")	
 R1#sh run | begin hostname
 hostname R1
 !
@@ -217,12 +202,12 @@ license udi pid CISCO2911/K9 sn FTX152457FX
 !
     --output truncated--
 
-R1#sh run | include interface           (view only config lines containing "interface")
+R1#sh run | include interface (view config lines wich include the word "interface")
 interface GigabitEthernet0/0
 interface GigabitEthernet0/1
 interface GigabitEthernet0/2
 interface Vlan1
-R1#sh run | exclude interface           (exclude lines containing "interface")
+R1#sh run | exclude interface (not including "interface")
 Building configuration...
 
 Current configuration : 741 bytes
@@ -249,17 +234,16 @@ no ipv6 cef
 R1#
 ```
 
-#### IOS Configuration Management
-
+### [IOS Configuration Management]
 ```diff
-R1#copy run start                       (copying running-config to startup-config)
+R1#copy run start (copying running config to startup config)
 Destination filename [startup-config]? 
 Building configuration...
 [OK]
 R1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#hostname RouterX             (changing the hostname)
-RouterX(config)#do show startup-config  (checking what hostname would apply after a reload)
+R1(config)#hostname RouterX(changing hostname)
+RouterX(config)#do show startup-config (checking host that would be used during after startup)
 Using 741 bytes
 !
 version 15.1
@@ -267,7 +251,7 @@ no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
 !
-hostname R1                             (hostname after startup — changes take effect immediately, but are temporary until saved)
+hostname R1(hostname to be used after satrtup, commands take effect immediately but are only temporary until we save them )
 !
 !
 !
@@ -283,11 +267,11 @@ no ipv6 cef
 !
 !
     --output truncated--
-RouterX#copy run start                  (saving current running-config to startup-config)
+RouterX#copy run start (saving curren running config to startup config)
 Destination filename [startup-config]? 
 Building configuration...
 [OK]
-RouterX#show start                      (verifying the hostname that will apply after startup)
+RouterX#show start (to verify what hostname would be used after startup)
 Using 746 bytes
 !
 version 15.1
@@ -295,7 +279,7 @@ no service timestamps log datetime msec
 no service timestamps debug datetime msec
 no service password-encryption
 !
-hostname RouterX                        (verified)
+hostname RouterX (verified)
 !
 !
 !
@@ -311,24 +295,89 @@ no ipv6 cef
 !
 !
 
-RouterX#copy run flash                  (backing up the running-config to flash memory — not a great idea 🙂‍↔️)
+RouterX#copy run flash (backing up current running config to flash memory(not a good idea 🙂‍↔️))
 Destination filename [running-config]? 
 Building configuration...
 [OK]
-RouterX#copy run tftp                   (backing up to an external TFTP server)
+RouterX#copy run tftp(backing up to external TFTP server)
 Address or name of remote host []? 10.10.10.10 
 Destination filename [RouterX-confg]? 
 
 Writing running-config........
-%Error opening tftp://10.10.10.10/RouterX-confg (Timed out)   (TFTP server wasn't set up in the lab, so the backup timed out)
-RouterX#reload                          (confirming the change to startup config persists)
+%Error opening tftp://10.10.10.10/RouterX-confg (Timed out) (connectivity to TFTP server in lab was nt set up so timed failed to backup)
+RouterX#reload (evidenting shange in startup configurations)
 Proceed with reload? [confirm]
 System Bootstrap, Version 15.1(4)M4, RELEASE SOFTWARE (fc1)
 Technical Support: http://www.cisco.com/techsupport
 Copyright (c) 2010 by cisco Systems, Inc.
- --output truncated-- 
+Total memory size = 512 MB - On-board = 512 MB, DIMM0 = 0 MB
+CISCO2911/K9 platform with 524288 Kbytes of main memory
+Main memory is configured to 72/-1(On-board/DIMM0) bit mode with ECC disabled
+
+Readonly ROMMON initialized
+
+program load complete, entry point: 0x80803000, size: 0x1b340
+program load complete, entry point: 0x80803000, size: 0x1b340
+
+IOS Image Load Test
+___________________
+Digitally Signed Release Software
+program load complete, entry point: 0x81000000, size: 0x3bcd3d8
+Self decompressing the image :
+########################################################################## [OK]
+Smart Init is enabled
+smart init is sizing iomem
+                  TYPE      MEMORY_REQ
+     Onboard devices &
+          buffer pools      0x022F6000
+-----------------------------------------------
+                TOTAL:      0x022F6000
+Rounded IOMEM up to: 36Mb.
+Using 6 percent iomem. [36Mb/512Mb]
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.1(4)M5, RELEASE SOFTWARE (fc2)Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Wed 18-Jul-07 04:52 by pt_team
+Image text-base: 0x2100F918, data-base: 0x24729040
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco CISCO2911/K9 (revision 1.0) with 491520K/32768K bytes of memory.
+Processor board ID FTX152400KS
+3 Gigabit Ethernet interfaces
+DRAM configuration is 64 bits wide with parity disabled.
+255K bytes of non-volatile configuration memory.
+249856K bytes of ATA System CompactFlash 0 (Read/Write)
 
 Press RETURN to get started!
 
-RouterX> 
+
+
+RouterX>
 ```
