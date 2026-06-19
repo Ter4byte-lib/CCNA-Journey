@@ -29,7 +29,7 @@ The same software (PuTTY) is used for initial config, but the connection type us
 
 A direct connection is also useful during troubleshooting, for instance when the device can't be reached over the network because its IP address is unresponsive. It's also used to configure the boot process of the device, since SSH can't be used there, as the IP address would need to already be live, meaning the device has already booted up.
 
-## Lab: Navigating the IOS *(Atlas, some coding 😮‍💨)*
+## Lab: Navigating the IOS *(At last, some coding 😮‍💨)*
 
 ![initiating configuration](getting-started.png)
 
