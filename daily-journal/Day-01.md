@@ -1,5 +1,5 @@
 ### Topic: The OSI model
-
+#Date: 18-06-2026
 **Status:** 🟢 
 
 **What I learned:**
@@ -30,7 +30,6 @@
 **Goal for tomorrow:**
 - [One specific thing]
 
-```cisco
-your code here
-show r begin hostname
+```bash
+ping 192.168.1.1
 ```
