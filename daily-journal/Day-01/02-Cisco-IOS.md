@@ -8,8 +8,6 @@ The operating system has been used since the inception of the Cisco organisation
 
 There are other operating systems that differ slightly from IOS: IOS features a monolithic kernel, whereas systems like NX-OS, IOS-XE, and IOS-XR feature a microkernel.
 
-> [!NOTE]
-> Corrected "IOS-XS" → "IOS-XR" — there's no Cisco OS called IOS-XS.
 
 | | IOS | NX-OS / IOS-XE / IOS-XR |
 |---|---|---|
