@@ -30,6 +30,7 @@ The layer consists of two main protocols: TCP and UDP.
 | Typical use | Static web applications | Real-time video and voice |
 
 TCP header:
+![alt text](image.png)
 <img src="TCP-header.png" width="550">
 
 TCP connection setup uses a three-way handshake:
