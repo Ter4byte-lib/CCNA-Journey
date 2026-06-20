@@ -12,11 +12,11 @@
 <img src="Session-multiplexing.png" width="550">
 
 
-- Another feature of the transport layer is the use of port numbers, port numbers are used to identify the type of application a data traffic is for.
-  - Sender sends data traffic with source port number and destination port number, when receiver is sending back traffic, the destination port number and source port number are flipped around.
-  - A type of firewall uses this to block unauthorised traffic, so it only always allows traffic from the sender to the receiver but when the receiver sends back it compares, or rather checks, if the connection was initiated by a sender or receiver, if it was initiated by a receiver then the traffic is blocked.
-  - So it checks if the sender destination port number = the receiver source port number and vice versa, if they don't match it means connection was initiated by receiver so traffic is blocked.
-
+  - Another feature of the transport layer is the use of port numbers, port numbers are used to identify the type of application a data traffic is for.
+  - Sender sends data traffic with source port number and destination port number, when receiver replies the source and destination port numbers are flipped around.
+  - A type of firewall (a stateful firewall) uses this to filter traffic: it records the outbound traffic as it leaves, so it has a record of the session.
+  - When traffic comes back in, it checks if the reply matches that recorded session, if it does then it's allowed through.
+  - If the receiver instead sends a fresh SYN (trying to start a new connection rather than reply to one), it won't match any recorded session, so it gets blocked.
 
 <img src="port-numbers.png" width="550">
 
