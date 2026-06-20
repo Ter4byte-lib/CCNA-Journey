@@ -5,7 +5,7 @@
 
 ## What I learned:
 - Provides transparent transfer of data between hosts and is responsible for flow control
-- Flow control is the process by which flow of data is adjusted so that both hosts can handle it; in simple terms, or rather the way I understand it: in a multiplayer game, different players have different internet speeds, so a player might send traffic faster than the other, if flow control is enabled the receiver will have a mechanism to tell the sender to slow down the flow of data so
+- Flow control is the process by which flow of data is adjusted so that both hosts can handle it; in simple terms, or rather the way I understand it: in a multiplayer game, different players have different internet speeds, so a player might send traffic faster than the other, if flow control is enabled the receiver will have a mechanism to tell the sender to slow down the flow of data
 - Session multiplexing also takes place in layer 4, this is the process by which multiple sessions are supported by a host, the host is also able to manage traffic streams under a single link
 
 
