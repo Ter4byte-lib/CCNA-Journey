@@ -98,3 +98,11 @@ Subnet masks always begin with contiguous "1"s so the 1s and 0s never mix up, li
   - `255.255.255.0` = `/24`
   - `255.255.0.0` = `/16`
 <img src="adress-notations.png" width="500">
+
+
+## Questions
+
+- What's the difference between the network address and host address, or rather what's their function?
+  - Got confused by how the first host is `10.0.0.1` and the last is `10.255.255.254`
+- What does it mean for a subnet to have contiguous 1s, and how does slash notation connect to that?
+- Would `11111111.00001111.11110000.11111111` be a legal subnet mask? What about `0.0.0.0` or `255.255.255.255`?
