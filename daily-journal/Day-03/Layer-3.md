@@ -97,5 +97,5 @@ Subnet masks always begin with contiguous "1"s so the 1s and 0s never mix up, li
 - Where subnet mask:
   - `255.255.255.0` = `/24`
   - `255.255.0.0` = `/16`
-
+![alt text](image-1.png)
 <img src="adress-notations.png" width="500">
