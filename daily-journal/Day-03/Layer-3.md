@@ -22,7 +22,6 @@
 - Multicast - sends traffic to multiple hosts
 - Broadcast - sends traffic to all hosts
 
-![alt text](image.png)
 <img src="types-of-traffics.png" width="500">
 
 | Traffic Type | How it Works |
