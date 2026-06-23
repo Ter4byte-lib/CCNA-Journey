@@ -60,5 +60,3 @@ These are valid to assign but are not routable on the public internet. A use cas
 - Not allocated to hosts, no default subnet mask
 - Range: `240.0.0.0` to `255.255.255.254`
 - `255.255.255.255` is the limited broadcast address (broadcasts to all hosts on the local network)
-
-## Questions
