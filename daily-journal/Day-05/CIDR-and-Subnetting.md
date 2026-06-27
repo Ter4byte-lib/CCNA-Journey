@@ -84,7 +84,7 @@ IP subnet zero is enabled by default on Cisco routers. It overrides the older li
 | Number of subnets   | 128          | 64                     |
 | Address efficiency  | Higher       | Lower                  |
 | Standard compliance | Non-standard | Standard               |
-| CCNA exam default   | No           | Yes - use /30 for 2 hosts |
+| CCNA exam default   | No, unless explicitly asked to do so          | Yes - use /30 for 2 hosts |
 
 ---
 
