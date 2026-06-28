@@ -3,6 +3,7 @@
 Frames are encoded and decoded into bits; error detection and correction for the physical layer can be provided here.
 Ethernet is the Layer 2 medium used on local area networks.
 
+## Layer 2 Header
 <img src="layer2-header.png" width="600">
 
 ## Media Access Control
